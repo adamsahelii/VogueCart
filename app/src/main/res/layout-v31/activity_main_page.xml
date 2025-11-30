@@ -21,43 +21,18 @@
         app:layout_constraintWidth_percent="1">
 
 
-        <!-- Horizontal Layout for Button and Text -->
-        <LinearLayout
+        <!-- Welcome Text -->
+        <TextView
+            android:id="@+id/welcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables,UselessParent">
-
-            <!-- Profile Image -->
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="73dp"
-                android:layout_height="73dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/rounded_image"
-                android:clipToOutline="true"
-                android:contentDescription="@string/profile_icon"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/tracy"
-                tools:ignore="ImageContrastCheck" />
-
-            <!-- Text to the Right of the Button -->
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="50dp"
-                android:gravity="center_horizontal"
-                android:text="@string/username"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="InvalidId" />
-        </LinearLayout>
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="Welcome to VogueCart"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <!-- Search Bar -->
         <LinearLayout
@@ -427,12 +402,19 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <!-- Spacer to push menu bar to bottom -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <!-- Menu Bar -->
         <LinearLayout
             android:layout_width="325dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_menu"
             android:padding="8dp"
             tools:ignore="VisualLintBounds">
