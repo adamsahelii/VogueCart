@@ -51,10 +51,35 @@ public class SportsCategoryActivity extends AppCompatActivity {
     }
 
     private void fetchItemsByCategory(String category) {
-        // USE MOCK DATA FOR FRONTEND DEVELOPMENT
-        itemsList.clear();
-        itemsList.addAll(MockDataHelper.getMockProductsByCategory(category));
-        adapter.notifyDataSetChanged();
+        Call<List<Item>> call = ApiClient.retrofitService.searchItems(category);
+
+        call.enqueue(new Callback<List<Item>>() {
+            @Override
+            public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    itemsList.clear();
+                    itemsList.addAll(response.body());
+                    adapter.notifyDataSetChanged();
+
+                    if (itemsList.isEmpty()) {
+                        Toast.makeText(SportsCategoryActivity.this,
+                                "No items found for category",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(SportsCategoryActivity.this,
+                            "Failed to load items: " + response.message(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Item>> call, Throwable t) {
+                Toast.makeText(SportsCategoryActivity.this,
+                        "Error: " + t.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private class SportsItemAdapter extends BaseAdapter {

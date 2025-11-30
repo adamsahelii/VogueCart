@@ -42,7 +42,14 @@ public class FavoritesActivity extends AppCompatActivity {
         returnButton = findViewById(R.id.return_button);
 
         userId = getSharedPreferences("user_prefs", MODE_PRIVATE)
-                .getInt("user_id", MockDataHelper.MOCK_USER_ID); // Use mock user ID as default
+                .getInt("user_id", -1);
+
+        if (userId == -1) {
+            Toast.makeText(this, "Please sign in first", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SignInActivity.class));
+            finish();
+            return;
+        }
 
         adapter = new FavoritesAdapter(favoriteItems, this, item -> removeItemFromFavorites(item));
         favoritesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -72,21 +79,55 @@ public class FavoritesActivity extends AppCompatActivity {
     }
 
     private void loadFavoritesFromBackend() {
-        // USE MOCK DATA FOR FRONTEND DEVELOPMENT
-        favoriteItems.clear();
-        favoriteItems.addAll(MockDataHelper.getMockFavorites());
-        adapter.notifyDataSetChanged();
-        updateEmptyState();
+        Call<FavoritesResponse> call = ApiClient.retrofitService.getFavorites(userId);
+
+        call.enqueue(new Callback<FavoritesResponse>() {
+            @Override
+            public void onResponse(Call<FavoritesResponse> call, Response<FavoritesResponse> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
+                    favoriteItems.clear();
+                    if (response.body().getItems() != null) {
+                        favoriteItems.addAll(response.body().getItems());
+                    }
+                    adapter.notifyDataSetChanged();
+                    updateEmptyState();
+                } else {
+                    Toast.makeText(FavoritesActivity.this,
+                            "Failed to load favorites",
+                            Toast.LENGTH_SHORT).show();
+                    updateEmptyState();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FavoritesResponse> call, Throwable t) {
+                Toast.makeText(FavoritesActivity.this,
+                        "Error: " + t.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+                updateEmptyState();
+            }
+        });
     }
 
     private void removeItemFromFavorites(Item item) {
-        // MOCK BEHAVIOR FOR FRONTEND DEVELOPMENT
-        favoriteItems.remove(item);
-        adapter.notifyDataSetChanged();
-        updateEmptyState();
-        Toast.makeText(FavoritesActivity.this,
-                item.getName() + " removed (mock)",
-                Toast.LENGTH_SHORT).show();
+        Call<SimpleResponse> call = ApiClient.retrofitService.removeFavorite(userId, item.getId());
+
+        call.enqueue(new Callback<SimpleResponse>() {
+            @Override
+            public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
+                // Regardless of server response, update UI
+                favoriteItems.remove(item);
+                adapter.notifyDataSetChanged();
+                updateEmptyState();
+            }
+
+            @Override
+            public void onFailure(Call<SimpleResponse> call, Throwable t) {
+                Toast.makeText(FavoritesActivity.this,
+                        "Error removing favorite: " + t.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void updateEmptyState() {
