@@ -1,0 +1,5 @@
+<!-- res/drawable/favorite_heart_selector.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true" android:drawable="@drawable/baseline_favorite_24" /> <!-- Selected state -->
+    <item android:drawable="@drawable/baseline_favorite_border_24" /> <!-- Default (unselected) state -->
+</selector>

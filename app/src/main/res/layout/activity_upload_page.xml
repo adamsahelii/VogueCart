@@ -1,0 +1,122 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".UploadPage">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/uploadTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update profile picture"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <!-- Image preview -->
+    <ImageView
+        android:id="@+id/profilePreview"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/circle_background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sample_profile_picture"
+        app:layout_constraintTop_toBottomOf="@id/uploadTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Choose image button -->
+    <Button
+        android:id="@+id/pickImageButton"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:text="Choose from gallery"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/light_blue"
+        app:layout_constraintTop_toBottomOf="@id/profilePreview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Save button -->
+    <Button
+        android:id="@+id/saveImageButton"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="Save"
+        android:textColor="@color/black"
+        android:backgroundTint="#F0BA58"
+        app:layout_constraintTop_toBottomOf="@id/pickImageButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation_upload"
+        android:layout_width="325dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/rounded_menu"
+        android:gravity="center"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/home_outline"
+            android:contentDescription="@string/home"
+            tools:ignore="TouchTargetSizeCheck"/>
+
+        <ImageButton
+            android:id="@+id/FavoriteButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/favorite"
+            android:contentDescription="@string/favorite"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck"/>
+
+        <ImageButton
+            android:id="@+id/ScanButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/scan"
+            android:contentDescription="@string/scan"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck"/>
+
+        <ImageButton
+            android:id="@+id/CartButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/cart_outline"
+            android:contentDescription="@string/cart"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

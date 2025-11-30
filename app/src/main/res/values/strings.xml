@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">PROJECT_279</string>
+    <string name="favorites">Favorites</string>
+    <string name="favorite_empty">Favorite is Empty</string>
+    <string name="your_message">Your favorite basket is empty, look for some of your favorite products</string>
+    <string name="return_home">Return Home</string>
+    <string name="image_description">Avatar image description</string>
+    <!-- Additional strings for the project -->
+    <string name="logo">Logo</string>
+    <string name="snapshop">SNAPSHOP</string>
+    <string name="sign_in_button">Sign in</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="email">Email</string>
+    <string name="email_icon">email icon</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="password_lock">password lock</string>
+    <string name="enter_your_password">enter your password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="log_in_button">Log in</string>
+    <string name="don_t_have_an_account_sign_up">Don’t have an Account? Sign up</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone_icon">phone icon</string>
+    <string name="phone_number_example">+961 00–000 000</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="re_enter_your_password">re-enter your password</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account_sign_in">Already have an Account? Sign in</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="profile_icon">profile_icon</string>
+    <string name="username">Tracy</string>
+    <string name="search_icon">search icon</string>
+    <string name="search">Search</string>
+    <string name="add1">add1</string>
+    <string name="ads_viewpager_description">Advertisement view pager</string>
+    <string name="join_as_guest">Join as Tracy</string>
+    <string name="ad_image">ad image</string>
+    <string name="category_fashion">category_fashion</string>
+    <string name="fashion">Fashion</string>
+    <string name="electronics">Electronics</string>
+    <string name="shoes">Shoes</string>
+    <string name="sports">Sports</string>
+    <string name="cosmetics">Cosmetics</string>
+    <string name="category_shoes">category_shoes</string>
+    <string name="category_electronics">category_electronics</string>
+    <string name="category_sports">category_sports</string>
+    <string name="category_cosmetics">category_cosmetics</string>
+    <string name="special_for_you">Special for you</string>
+    <string name="item_1">Push Active Earbuds</string>
+    <string name="push_active_earbuds">Push Active Earbuds</string>
+    <string name="price_1">$79.99</string>
+    <string name="item_2">Item 2</string>
+    <string name="pahajim_shoulder_bag">Pahajim Shoulder Bag</string>
+    <string name="price_2">$62.90</string>
+    <string name="home">home</string>
+    <string name="favorite">favorite</string>
+    <string name="scan">scan</string>
+    <string name="cart">cart</string>
+    <string name="profile">profile</string>
+    <string name="cart_item">Cart</string>
+    <string name="item_name">Item Name</string>
+    <string name="price">Price</string>
+    <string name="remove">Remove</string>
+    <string name="item">Item</string>
+    <string name="checkout">Checkout</string>
+    <string name="total">Total</string>
+    <string name="_62_90">$62.90</string>
+    <string name="aub_hamra_lebanon">AUB, Hamra, Lebanon</string>
+
+
+</resources>
+

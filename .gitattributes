@@ -1,0 +1,8 @@
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+app/src/main/res/drawable/add2.png filter=lfs diff=lfs merge=lfs -text
+app/src/main/res/drawable/add4.png filter=lfs diff=lfs merge=lfs -text
+app/src/main/res/drawable/tracy.jpg filter=lfs diff=lfs merge=lfs -text
+app/src/main/res/drawable/product.png filter=lfs diff=lfs merge=lfs -text
+app/src/main/res/drawable/add1.png filter=lfs diff=lfs merge=lfs -text
+app/src/main/res/drawable/add3.png filter=lfs diff=lfs merge=lfs -text
