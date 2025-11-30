@@ -58,6 +58,18 @@ public class FashionCategoryActivity extends AppCompatActivity {
     }
 
     private void fetchItemsByCategory(String category) {
+        // USE MOCK DATA FOR FRONTEND DEVELOPMENT
+        itemsList.clear();
+        itemsList.addAll(MockDataHelper.getMockProductsByCategory(category));
+        adapter.notifyDataSetChanged();
+
+        if (itemsList.isEmpty()) {
+            Toast.makeText(FashionCategoryActivity.this,
+                    "No items found",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        /* ORIGINAL API CODE - uncomment when backend is available
         Call<List<Item>> call = ApiClient.retrofitService.searchItems(category);
 
         call.enqueue(new Callback<List<Item>>() {
@@ -87,6 +99,7 @@ public class FashionCategoryActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+        */
     }
 
     private class FashionItemAdapter extends BaseAdapter {
@@ -141,6 +154,18 @@ public class FashionCategoryActivity extends AppCompatActivity {
             heartIcon.setChecked(false);
 
             heartIcon.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                // MOCK BEHAVIOR FOR FRONTEND DEVELOPMENT
+                if (isChecked) {
+                    Toast.makeText(FashionCategoryActivity.this,
+                            item.getName() + " added to favorites (mock)",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(FashionCategoryActivity.this,
+                            item.getName() + " removed from favorites (mock)",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                /* ORIGINAL API CODE - uncomment when backend is available
                 if (userId == -1) {
                     Toast.makeText(FashionCategoryActivity.this,
                             "Please sign in to use favorites",
@@ -190,10 +215,17 @@ public class FashionCategoryActivity extends AppCompatActivity {
                         }
                     });
                 }
+                */
             });
 
             // CART
             addToCartButton.setOnClickListener(v -> {
+                // MOCK BEHAVIOR FOR FRONTEND DEVELOPMENT
+                Toast.makeText(FashionCategoryActivity.this,
+                        item.getName() + " added to cart (mock)",
+                        Toast.LENGTH_SHORT).show();
+
+                /* ORIGINAL API CODE - uncomment when backend is available
                 if (userId == -1) {
                     Toast.makeText(FashionCategoryActivity.this,
                             "Please sign in to add to cart",
@@ -219,6 +251,7 @@ public class FashionCategoryActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+                */
             });
 
             return view;

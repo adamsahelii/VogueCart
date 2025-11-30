@@ -43,14 +43,7 @@ public class CartFragment extends AppCompatActivity {
         proceedButton = findViewById(R.id.button_proceed_to_checkout);
 
         userId = getSharedPreferences("user_prefs", MODE_PRIVATE)
-                .getInt("user_id", -1);
-
-        if (userId == -1) {
-            Toast.makeText(this, "Please sign in first", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, SignInActivity.class));
-            finish();
-            return;
-        }
+                .getInt("user_id", MockDataHelper.MOCK_USER_ID); // Use mock user ID as default
 
         adapter = new AddToCartAdapter(cartItems, this, item -> removeFromCart(item));
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -86,54 +79,21 @@ public class CartFragment extends AppCompatActivity {
     }
 
     private void loadCartFromBackend() {
-        Call<CartResponse> call = ApiClient.retrofitService.getCart(userId);
-
-        call.enqueue(new Callback<CartResponse>() {
-            @Override
-            public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    cartItems.clear();
-                    if (response.body().getItems() != null) {
-                        cartItems.addAll(response.body().getItems());
-                    }
-                    adapter.notifyDataSetChanged();
-                    updateEmptyState();
-                } else {
-                    Toast.makeText(CartFragment.this,
-                            "Failed to load cart",
-                            Toast.LENGTH_SHORT).show();
-                    updateEmptyState();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CartResponse> call, Throwable t) {
-                Toast.makeText(CartFragment.this,
-                        "Error: " + t.getMessage(),
-                        Toast.LENGTH_SHORT).show();
-                updateEmptyState();
-            }
-        });
+        // USE MOCK DATA FOR FRONTEND DEVELOPMENT
+        cartItems.clear();
+        cartItems.addAll(MockDataHelper.getMockCartItems());
+        adapter.notifyDataSetChanged();
+        updateEmptyState();
     }
 
     private void removeFromCart(Item item) {
-        Call<SimpleResponse> call = ApiClient.retrofitService.removeFromCart(userId, item.getId());
-
-        call.enqueue(new Callback<SimpleResponse>() {
-            @Override
-            public void onResponse(Call<SimpleResponse> call, Response<SimpleResponse> response) {
-                cartItems.remove(item);
-                adapter.notifyDataSetChanged();
-                updateEmptyState();
-            }
-
-            @Override
-            public void onFailure(Call<SimpleResponse> call, Throwable t) {
-                Toast.makeText(CartFragment.this,
-                        "Error removing from cart: " + t.getMessage(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        // MOCK BEHAVIOR FOR FRONTEND DEVELOPMENT
+        cartItems.remove(item);
+        adapter.notifyDataSetChanged();
+        updateEmptyState();
+        Toast.makeText(CartFragment.this,
+                item.getName() + " removed (mock)",
+                Toast.LENGTH_SHORT).show();
     }
 
     private void updateEmptyState() {

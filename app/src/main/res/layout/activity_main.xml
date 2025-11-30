@@ -4,41 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#f5efe3"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="190dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="120dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="100dp"
         android:contentDescription="@string/logo"
         android:scaleType="centerInside"
-        android:src="@drawable/snapshop_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="163dp"
-        android:layout_height="48dp"
-        android:text="@string/snapshop"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:src="@drawable/voguecart_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        tools:ignore="TextSizeCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSignIn"
         android:layout_width="234dp"
         android:layout_height="60dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="@color/light_blue"
         android:padding="10dp"
         android:text="@string/sign_in_button"
@@ -48,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintWidth_percent="0.8"
         tools:ignore="MissingConstraints" />
 

@@ -31,6 +31,9 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        // AUTO-LOGIN FOR FRONTEND DEVELOPMENT - Remove this when backend is ready
+        autoLoginWithMockUser();
+
         // 🔹 Match XML IDs
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
@@ -118,5 +121,25 @@ public class SignInActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // AUTO-LOGIN FOR FRONTEND DEVELOPMENT
+    private void autoLoginWithMockUser() {
+        // Save mock user info to SharedPreferences
+        getSharedPreferences("user_prefs", MODE_PRIVATE)
+                .edit()
+                .putInt("user_id", MockDataHelper.MOCK_USER_ID)
+                .putString("user_email", MockDataHelper.MOCK_EMAIL)
+                .putString("username", MockDataHelper.MOCK_USERNAME)
+                .apply();
+
+        Toast.makeText(this,
+                "Auto-logged in as " + MockDataHelper.MOCK_USERNAME + " (DEV MODE)",
+                Toast.LENGTH_SHORT).show();
+
+        // Navigate to main page immediately
+        Intent intent = new Intent(SignInActivity.this, MainPageActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

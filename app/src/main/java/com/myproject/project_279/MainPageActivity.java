@@ -27,8 +27,6 @@ public class MainPageActivity extends AppCompatActivity {
     private EditText searchInput;
     private Button searchButton;
 
-    private ImageView profileImageView;
-    private TextView usernameTextView;
     private EditText searchEditText;
     private ImageView searchIcon;
     private ViewPager2 adsViewPager;
@@ -53,8 +51,6 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        profileImageView = findViewById(R.id.imageView);
-        usernameTextView = findViewById(R.id.username);
         searchEditText = findViewById(R.id.searchEditText);
         searchIcon = findViewById(R.id.searchIcon);
         adsViewPager = findViewById(R.id.adsViewPager);
@@ -244,10 +240,6 @@ public class MainPageActivity extends AppCompatActivity {
             String searchText = searchEditText.getText().toString();
             System.out.println("Search text: " + searchText);
             return true;
-        });
-
-        profileImageView.setOnClickListener(v -> {
-            // Profile image clicked
         });
     }
 }
